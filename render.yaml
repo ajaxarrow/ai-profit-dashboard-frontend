@@ -1,0 +1,14 @@
+# Render Blueprint for the web app. It proxies /api/* to the backend, so BACKEND_URL must point at it.
+services:
+  - type: web
+    name: ai-profit-dashboard-frontend
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.2
+      - key: BACKEND_URL       # e.g. https://ai-profit-dashboard-backend.onrender.com (no trailing slash needed)
+        sync: false
