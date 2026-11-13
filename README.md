@@ -4,6 +4,8 @@ The web app for an AI profit dashboard for online stores: a command center where
 
 Backend (Django API): https://github.com/ajaxarrow/ai-profit-dashboard-backend
 
+**Schritt-für-Schritt-Anleitung (Deutsch, mit Screenshots): [docs/ANLEITUNG.md](docs/ANLEITUNG.md)**: eine praktische Führung durch die Oberfläche für Anwender, keine Entwickler-Dokumentation.
+
 ## Pages
 | Page | What it does |
 |---|---|
