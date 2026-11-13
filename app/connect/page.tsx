@@ -14,7 +14,7 @@ const ASSUME: [string, string, string][] = [
 ];
 
 export default function ConnectPage() {
-  const { stores, store, refreshStores, setStoreId } = useApp();
+  const { stores, store, refreshStores, setStoreId, readOnly } = useApp();
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [f, setF] = useState({ domain: "", access_token: "", client_id: "", client_secret: "" });
@@ -51,6 +51,12 @@ export default function ConnectPage() {
       <PageHeader title="Data sources" sub="Every source is a connector that writes into one shared data model, so new sources never change the dashboard or the AI." />
       {msg && <div className="mb-4">{msg.ok ? <div role="status" className="rounded-lg border border-pos/30 bg-posbg px-4 py-3 text-[13px] text-pos">{msg.text}</div> : <ErrorBox message={msg.text} />}</div>}
 
+      {readOnly && (
+        <div role="note" className="mb-4 rounded-xl border border-line2 bg-[#f6f2e4] px-4 py-3 text-[13px] text-ink2">
+          This is a read-only demo of a Shopify store that is already connected, with its ad data imported. Connecting, syncing, importing and removing are switched off here.
+        </div>
+      )}
+      <fieldset disabled={readOnly} className="contents">
       <div className="grid grid-cols-[1.1fr_1fr] items-start gap-6 max-lg:grid-cols-1">
         <Panel title="Shopify" sub="Products, orders, refunds, discounts and cost per item. Read-only access.">
           <form className="grid gap-3 px-5 pb-5" onSubmit={connect}>
@@ -131,6 +137,7 @@ export default function ConnectPage() {
         )}
       </div>
 
+      </fieldset>
       <h2 className="serif mb-2 mt-10 text-[19px]">Next connectors</h2>
       <p className="mb-3 max-w-[70ch] text-[13px] text-ink2">Each one is a single file implementing the same interface as the Shopify connector, so nothing else changes when they are added.</p>
       <div className="flex flex-wrap gap-2">{FUTURE.map((n) => <Tag key={n}>{n} · planned</Tag>)}</div>
