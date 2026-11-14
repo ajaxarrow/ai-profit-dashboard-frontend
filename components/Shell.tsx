@@ -6,6 +6,7 @@ import { get } from "@/lib/api";
 import { useApp } from "@/lib/app-context";
 import { ago, money, pct } from "@/lib/format";
 import Chat from "./Chat";
+import Logo from "./Logo";
 import Onboarding from "./Onboarding";
 import { ErrorBox } from "./ui";
 
@@ -40,9 +41,9 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="grid min-h-screen grid-cols-[264px_minmax(0,1fr)] gap-0 p-4 max-md:grid-cols-1 print:block print:p-0">
       <aside className="no-print sticky top-4 flex h-[calc(100vh-32px)] flex-col px-4 pb-4 pt-3 max-md:static max-md:h-auto">
-        <div className="flex items-center gap-2 text-[14px] font-semibold">
-          <span className="size-3.5 rounded-[4px] bg-ink" aria-hidden /> Profit Desk
-        </div>
+        <Link href="/" className="flex items-center gap-2.5 text-[15px] font-semibold tracking-[-0.01em]">
+          <Logo className="size-7" /> Profit Desk
+        </Link>
 
         <div className="mt-9">
           <p className="serif text-[26px] leading-[1.15]">Welcome back,</p>
